@@ -270,3 +270,4 @@ defineReactive(obj, key, value) {
 }
 ```
 
+此时就完成了输入框的双向绑定。
