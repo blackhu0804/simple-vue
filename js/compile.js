@@ -9,7 +9,7 @@ class Compile {
             // 2. 编译 -> 提取想要的元素节点 v-model 和 文本节点 {{}}
             this.compile(fragment);
             // 3.编译好的 fragment 塞回页面
-            this.el.appendChild(fragment    )
+            this.el.appendChild(fragment)
         }
     }
     // 是不是指令
