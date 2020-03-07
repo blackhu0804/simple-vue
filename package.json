@@ -1,0 +1,27 @@
+{
+  "name": "simple-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackhu0804/simple-vue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "bugs": {
+    "url": "https://github.com/blackhu0804/simple-vue/issues"
+  },
+  "homepage": "https://github.com/blackhu0804/simple-vue#readme"
+}
