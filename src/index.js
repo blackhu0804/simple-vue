@@ -18,7 +18,8 @@ let vm = new Vue({
   }
 });
 
-console.log(vm.msg);
-console.log(vm.msg = 'world');
-console.log(vm.arr.push(4));
-console.log(vm.arr);
+// console.log(vm.msg);
+// console.log(vm.msg = 'world');
+// console.log(vm.arr.push(123));
+console.log(vm.arr.push({a: 1}));
+console.log(vm.arr[3].a = 100);
