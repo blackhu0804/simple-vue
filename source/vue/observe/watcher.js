@@ -1,3 +1,4 @@
+import {pushTarget, popTarget} from './dep'
 let id = 0;
 
 class Watcher { // 每次产生一个watch 都会有一个唯一的标识
@@ -22,7 +23,14 @@ class Watcher { // 每次产生一个watch 都会有一个唯一的标识
   }
 
   get() {
-    this.getter(); // 让传入的函数执行
+    pushTarget(this); // 让 Dep.target = 这个渲染Watcher，如果数据变化，让watcher重新执行
+    this.getter && this.getter(); // 让传入的函数执行
+    popTarget();
+  }
+
+  update() {
+    console.log('数据更新');
+    this.get();
   }
 }
 

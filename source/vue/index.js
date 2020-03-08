@@ -39,7 +39,6 @@ function query(el) {
 Vue.prototype._update = function() {
   let vm = this;
   let el = vm.$el;
-
   /** TODO 虚拟DOM重写 */
   // 匹配 {{}} 替换
   let node = document.createDocumentFragment();
@@ -64,6 +63,8 @@ Vue.prototype.$mount = function () {
     vm._update(); // 更新组件
   }
   new Watcher(vm, updateComponent); // 渲染Watcher, 默认调用updateComponent
+
+  // 如果每个数据更新了 需要重新渲染
 }
 
 export default Vue; // 首先默认导出一个Vue

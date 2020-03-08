@@ -13,7 +13,11 @@ export const util = {
    * 编译文本 替换{{}}
    */
   compilerText(node, vm) {
-    node.textContent = node.textContent.replace(defaultRE, function(...args) {
+    if(!node.expr) {
+      // 给节点添加一个属性， 方便后续的更新操作
+      node.expr = node.textContent;
+    }
+    node.textContent = node.expr.replace(defaultRE, function(...args) {
       return util.getValue(vm, args[1]);
     });
   }
