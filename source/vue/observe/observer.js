@@ -15,7 +15,8 @@ export function defineReactive(data, key, value) {
     get() {
       // 取数据的时候进行依赖收集
       if (Dep.target) {
-        dep.addSub(Dep.target)
+        // 实现dep存watcher， watcher也可以存入dep
+        dep.depend();
       }
       return value;
     },

@@ -12,6 +12,12 @@ class Dep {
   notify() {
     this.subs.forEach(watcher => watcher.update());
   }
+
+  depend() {
+    if (Dep.target) { // Dep.target = 渲染 watcher
+      Dep.target.addDep(this);
+    }
+  }
 }
 
 /**

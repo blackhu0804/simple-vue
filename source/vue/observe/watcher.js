@@ -18,6 +18,8 @@ class Watcher { // 每次产生一个watch 都会有一个唯一的标识
     this.cb = cb;
     this.opts = opts;
     this.id = id++;
+    this.deps = [];
+    this.depsId = new Set();
 
     this.get();
   }
@@ -26,6 +28,16 @@ class Watcher { // 每次产生一个watch 都会有一个唯一的标识
     pushTarget(this); // 让 Dep.target = 这个渲染Watcher，如果数据变化，让watcher重新执行
     this.getter && this.getter(); // 让传入的函数执行
     popTarget();
+  }
+
+  addDep(dep) {
+    // 同一个watcher 不应该重复记录 dep
+    let id = dep.id;
+    if (!this.depsId.has(id)) {
+      this.depsId.add(id);
+      this.deps.push(dep); // 让watcher记录dep
+      dep.addSub(this);
+    }
   }
 
   update() {
