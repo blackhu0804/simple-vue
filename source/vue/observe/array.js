@@ -29,6 +29,20 @@ export function observerArray(inserted) {
   }
 }
 
+/**
+ * 多层数组依赖收集
+ * @param {Array} value 
+ */
+export function dependArray(value) {
+  for(let i = 0; i < value.length; i++) {
+    let currentItem = value[i];
+    currentItem.__ob__ && currentItem.__ob__.dep.depend();
+    if (Array.isArray(currentItem)) {
+      dependArray(currentItem);
+    }
+  }
+}
+
 methods.forEach(method => {
   arrayMethods[method] = function(...args) { // 函数劫持
     let result = oldArrayProtoMethods[method].apply(this, args);
@@ -46,6 +60,7 @@ methods.forEach(method => {
         break;
     }
     if(inserted) observerArray(inserted);
+    this.__ob__.dep.notify();
     return result;
   }
 }); 

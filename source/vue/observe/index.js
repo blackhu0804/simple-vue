@@ -18,6 +18,10 @@ export function observe(data) {
   if(typeof data !== 'object' || data == null) {
     return; // 不是对象或为null 不执行后续逻辑
   }
+  // 已经观察过的对象直接返回__ob__
+  if (data.__ob__) {
+    return data.__ob__;
+  }
   return new Observer(data);
 }
 

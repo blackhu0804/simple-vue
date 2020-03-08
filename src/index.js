@@ -9,7 +9,7 @@ let vm = new Vue({
         name: 'black',
         age: 18
       },
-      arr: [1, 2, 3],
+      arr: [[1, 2], 3],
     }
   },
   computed: {
@@ -25,5 +25,8 @@ let vm = new Vue({
 // console.log(vm.arr[3].a = 100);
 
 setTimeout(() => {
-  vm.msg = 'hello world';
+  // vm.msg = 'hello world';
+  vm.arr.push(4);
+  console.log(vm.arr[0]);
+  vm.arr[0].push(5);
 }, 2000);
