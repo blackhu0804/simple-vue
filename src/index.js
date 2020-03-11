@@ -26,7 +26,11 @@ let vm = new Vue({
 
 setTimeout(() => {
   // vm.msg = 'hello world';
-  vm.arr.push(4);
-  console.log(vm.arr[0]);
-  vm.arr[0].push(5);
+  // vm.arr.push(4);
+  // console.log(vm.arr[0]);
+  // vm.arr[0].push(5);
+  vm.msg = '1';
+  vm.msg = '2';
+  vm.msg = '3';
+  vm.msg = '4';
 }, 2000);

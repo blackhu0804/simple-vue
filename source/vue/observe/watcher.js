@@ -1,4 +1,5 @@
 import {pushTarget, popTarget} from './dep'
+import nextTick from './nextTick'
 let id = 0;
 
 class Watcher { // 每次产生一个watch 都会有一个唯一的标识
@@ -41,8 +42,31 @@ class Watcher { // 每次产生一个watch 都会有一个唯一的标识
   }
 
   update() {
+    queueWatcher(this);
+  }
+
+  run() {
     console.log('数据更新');
-    this.get();
+    this.get()
+  }
+}
+
+const queueIds = new Set();
+let queue = [];
+function flushQueue() {
+  if (!queue.length) return;
+  queue.forEach(watcher => watcher.run());
+  queueIds.clear();
+  queue = [];
+}
+
+function queueWatcher(watcher) {
+  const id = watcher.id;
+  if (!queueIds.has(id)) {
+    queueIds.add(id);
+    queue.push(watcher);
+
+    nextTick(flushQueue, 0);
   }
 }
 
