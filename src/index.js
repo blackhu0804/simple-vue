@@ -15,6 +15,15 @@ let vm = new Vue({
   computed: {
   },
   watch: {
+    msg: {
+      handler: function (newValue, oldValue) {
+        console.log('watch:', {
+          newValue,
+          oldValue
+        })
+      },
+      immediate: true
+    }
   }
 });
 
@@ -30,7 +39,14 @@ setTimeout(() => {
   // console.log(vm.arr[0]);
   // vm.arr[0].push(5);
   vm.msg = '1';
-  vm.msg = '2';
-  vm.msg = '3';
-  vm.msg = '4';
+  // vm.msg = '2';
+  // vm.msg = '3';
+  // vm.msg = '4';
 }, 2000);
+
+vm.$watch('msg', function (newValue, oldValue) {
+  console.log({
+    newValue,
+    oldValue
+  })
+})

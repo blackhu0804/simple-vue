@@ -10,7 +10,7 @@ export function initState(vm) {
     initComputed();
   }
   if (opts.watch) {
-    initWatch();
+    initWatch(vm);
   }
 }
 
@@ -62,9 +62,17 @@ function initComputed() {
 
 }
 
+function createWatcher(vm, key, userDef) {
+  vm.$watch(key, userDef)
+}
+
 /**
  * 初始化watch
  */
-function initWatch() {
-
+function initWatch(vm) {
+  const watch = vm.$options.watch;
+  for (const key in watch) {
+    const userDef = watch[key];
+    createWatcher(vm, key, userDef);
+  }
 } 

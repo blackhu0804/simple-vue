@@ -67,4 +67,15 @@ Vue.prototype.$mount = function () {
   // 如果每个数据更新了 需要重新渲染
 }
 
+Vue.prototype.$watch = function(expr, userDef) {
+  const vm = this;
+  let handler = userDef;
+  const opts = { user: true }
+  if (userDef.handler) {
+    handler = userDef.handler;
+    Object.assign(opts, userDef);
+  }
+  new Watcher(vm, expr, handler, opts);
+}
+
 export default Vue; // 首先默认导出一个Vue
