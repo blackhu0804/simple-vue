@@ -105,3 +105,5 @@ function initWatch(vm) {
 此时我们使用最开始的两种方法去监听我们的`msg`值的变化，然后异步去更新一下我们的`msg`值，两个log都会正常执行了。
 
 这样的话我们的`watch`也就简单实现啦~
+
+代码点击=> [传送门](https://github.com/blackhu0804/simple-vue/commit/7a13d0c9976ba5e63974e93da3cec7ff382d20ab)
